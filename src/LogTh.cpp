@@ -132,9 +132,7 @@ void Add_Log(char *text)
     if(*text) QLogStore(p1); 
     
     if ( MyUdp1.Connected )
-    {      
-      
-              
+    {       
       char tempText[1000] = "";
       sprintf( tempText,  text ); 
       Add_Udp(tempText);
