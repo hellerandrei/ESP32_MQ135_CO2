@@ -52,14 +52,15 @@ void loop() {
 
   sprintf(
         txt_ppm, 
-        "%s : %d\t%s : %d\t%s : %d\t%s : %d\t%s : %d\t%s : %d\t%s : %d", 
-        "MQ135 RZero: ",  (int)rzero,
+        "%s%d\t%s%d\t%s%.2f\t%s%d\t%s%d\t%s%.2f °C\t%s%d%s", 
+        "MQ135\tRZero: ", (int)rzero,
         "CorRZero: ",     (int)correctedRZero, 
-        "R: ",   (int)resistance, 
+        "R: ",            resistance, 
         "PPM: ",          (int)ppm, 
         "CorPPM: ",       (int)correctedPPM/100, 
-        "Temp: ",         (int)temperature, 
-        "Hum: ",          (int)humidity
+        "Temp: ",         temperature, 
+        "Hum: ",          (int)humidity,
+        " %"
         );  
 
  
