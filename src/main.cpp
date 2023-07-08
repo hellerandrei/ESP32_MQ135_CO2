@@ -42,7 +42,8 @@ void setup() {
 }
 
 void loop() {
-  char txt_ppm[556]; 
+  char log_msg[500]; 
+  // char udp_msg[250]; 
   
   float rzero           = mq135_sensor.getRZero();
   float correctedRZero  = mq135_sensor.getCorrectedRZero(temperature, humidity);
@@ -51,7 +52,7 @@ void loop() {
   float correctedPPM    = mq135_sensor.getCorrectedPPM(temperature, humidity);
 
   sprintf(
-        txt_ppm, 
+        log_msg, 
         "%s%d\t%s%d\t%s%.2f\t%s%d\t%s%d\t%s%.2f °C\t%s%d%s", 
         "MQ135\tRZero: ", (int)rzero,
         "CorRZero: ",     (int)correctedRZero, 
@@ -61,12 +62,11 @@ void loop() {
         "Temp: ",         temperature, 
         "Hum: ",          (int)humidity,
         " %"
-        );  
+  );   
+  Add_Log(log_msg);
 
- 
-  Add_Log(txt_ppm);
-  sprintf(txt_ppm, "ppm:%d,t:%d,h:%d",(int)correctedPPM/100, (int)temperature, (int)humidity);
-  Add_Udp(txt_ppm);
+  // sprintf(udp_msg, "ppm:%d,t:%.2f,h:%d",(int)correctedPPM/100, temperature, (int)humidity);
+  // Add_Udp(udp_msg);
 
   delay(1000);
 }
